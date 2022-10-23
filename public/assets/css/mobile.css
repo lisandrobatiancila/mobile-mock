@@ -13,7 +13,7 @@
     --updateColor: #07a4e3;
 }
 body {
-    background-color: var(--bodyColor);
+    background-color: var(--whiteColor);
 }
 * {
     margin: 0;
@@ -475,6 +475,11 @@ body {
     margin: 0 5px 5px 0;
     background-color: var(--whiteColor);
     text-align: center;
+    text-transform: capitalize;
+}
+.attr-content > .attr-card:hover {
+    box-shadow: 0 0 5px 3px var(--ddColor);
+    cursor: pointer;
 }
 ::-webkit-scrollbar {
     width: 5px;
