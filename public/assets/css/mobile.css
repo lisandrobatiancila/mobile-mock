@@ -6,6 +6,11 @@
     --homeScreenColor: #b8a6af;
     --silverColor: #efeeee;
     --chargingColor: #2ae264;
+    --shoppeColor: #f6c282;
+    --shoppeColorParent: #faab49;
+    --dangerColor: #ff5d22;
+    --removeColor: #fb7617;
+    --updateColor: #07a4e3;
 }
 body {
     background-color: var(--bodyColor);
@@ -26,8 +31,18 @@ body {
     position: relative;
     box-shadow: 0 0 5px 6px var(--darkColor);
 }
-.mobile-1-container .mobile-screen {
+.mobile-1-container .mobile-screen-dark {
     background-color: var(--darkColor);
+    width: 300px;
+    height: 460px;
+    position: absolute;
+    top: 65px;
+    left: 25px;
+    right: 1;
+    bottom: 1;
+}
+.mobile-1-container .mobile-screen-white {
+    background-color: var(--whiteColor);
     width: 300px;
     height: 460px;
     position: absolute;
@@ -204,6 +219,11 @@ body {
     margin-top: 5px;
 }
 
+/* MOBILE SIDE */
+.content {
+    position: relative;
+    height: inherit;
+}
 /* container side */
 .container {
     padding: 10px;
@@ -219,7 +239,7 @@ body {
     color: var(--whiteColor);
     margin: 0 auto;
     margin-top: 150px;
-    background-color: var(--chargingColor);
+    background-color: var(--whiteColor);
 }
 .charging_container > .charging_cell {
     width: 20px;
@@ -231,15 +251,305 @@ body {
     margin-left: 30px;
 }
 .charging_container > .charging_cell::after {
-    content: "Z";
+    content: "-Z";
 }
 .charging_container > .charging_percentage {
+    background-color: var(--chargingColor);
+    width: 100%;
+    height: 28%;
     font-size: 30px;
     letter-spacing: 5px;
     text-align: center;
     position: absolute;
+    left: 0;
     bottom: 0;
     font-weight: bold;
-    margin-left: 5px;
-    margin-bottom: 20px;
+}
+.heart_beat {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--chargingColor);
+    position: absolute;
+    left: 0;
+    margin-left: 140px;
+    margin-top: 130px;
+    animation: heart_beast 1s infinite 2s;
+}
+.loading-screen {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-left: 5px solid var(--darkColor);
+    border-top: 5px solid var(--darkColor);
+    border-right: 5px solid var(--darkColor);
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    bottom: 0;
+    margin-left: 120px;
+    margin-bottom: 100px;
+    animation: loading_screen 1s linear 1s infinite;
+}
+.fade-in {
+    background-color: #555;
+    animation: fade_in 1s ease-in 1s;
+}
+.shadow {
+    box-shadow: 0 0 10px 5px var(--ddColor);
+}
+
+/* DISPLAY MOBILE APPS */
+.app-screen-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 5px;
+}
+.e-commerce-container, .tik-tak-toe-container {
+    margin: 0 10px;
+    cursor: pointer;
+    position: relative;
+}
+.e-commerce-content, .tik-tak-toe-content {
+    width: 60px;
+    height: 60px;
+    background-color: var(--whiteColor);
+    box-shadow: 0 0 5px 3px var(--ddColor);
+    border-radius: 100px;
+}
+.e-commerce-container span, .tik-tak-toe-container span {
+    font-size: 14px;
+}
+.e-commerce-container:active, .tik-tak-toe-container:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+.e-commerce-content .e-commerce-icon, .tik-tak-toe-content .tik-tak-toe-icon {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    margin-left: 10px;
+}
+/* DESIGNING ECOMMERCE GUI */
+.e-commerce-gui-container {
+    padding: 5px;
+    background-color: var(--shoppeColorParent);
+    width: 100%;
+    height: inherit;
+    overflow-y: scroll;
+}
+.e-commerce-gui-container .ec-gui-header {
+    background-color: var(--whiteColor);
+    margin: 3px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow: auto;
+}
+.ec-gui-header .ec-cart-gui-header {
+    float: right;
+    cursor: pointer;
+    padding: 5px;
+}
+.ec-gui-header .ec-cart-gui-header:hover {
+    background-color: var(--ddColor);
+}
+.e-commerce-gui-card .e-commerce-card-header {
+    text-align: center;
+    background-color: var(--shoppeColor);
+    padding: 3px;
+    text-transform: capitalize;
+}
+.e-commerce-gui-container .e-commerce-gui-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.e-commerce-gui-container .e-commerce-gui-content .e-commerce-gui-card {
+    position: relative;
+    border: 1px solid var(--ddColor);
+    border-radius: 3px;
+    width: 47.8%;
+    margin: 3px;
+    cursor: pointer;
+    background-color: var(--whiteColor);
+}
+.e-commerce-gui-card .e-commerce-card-body {
+    padding: 5px;
+}
+.e-commerce-gui-card .e-commerce-card-body .e-commerce-actions{ 
+    width: 85px;
+    margin: 0 auto;
+}
+.e-commerce-gui-card .e-commerce-card-body .e-commerce-actions button{
+    border: 1px solid var(--shoppeColor);
+    text-transform: capitalize;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.e-commerce-gui-card .e-commerce-card-body .e-commerce-actions button:active{
+    background-color: var(--shoppeColor);
+    transform: translateY(-2px);
+}
+.e-commerce-gui-card input {
+    width: 50%;
+    border: 1px solid var(--ddColor);
+    border-radius: 3px;
+    padding: 3px;
+}
+.badge {
+    border-radius: 10px;
+    background-color: var(--ddColor);
+    padding: 3px;
+    margin: 0 5px;
+}
+.badge::after {
+    content: " ";
+}
+.badge-success {
+    background-color: var(--chargingColor);
+}
+.response-message {
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    margin-left: 190px;
+    margin-bottom: 5px;
+    border: 1px solid var(--ddColor);
+    border-radius: 3px;
+    padding: 5px;
+    background-color: var(--whiteColor);
+}
+.display-none {
+    display: none;
+}
+.success {
+    background-color: var(--chargingColor);
+}
+.danger {
+    background-color: var(--dangerColor);
+}
+.remove-btn {
+    border: 1px solid var(--removeColor) !important;
+}
+.update-btn {
+    border: 1px solid var(--updateColor) !important;
+}
+.remove-btn:active {
+    background-color: var(--removeColor) !important;
+}
+.update-btn:active {
+    background-color: var(--updateColor) !important;
+}
+/* DESIGNING THE CART */
+
+/* END OF DESIGNING THE CART */
+.attributes-container {
+    margin-top: 50px;
+    padding: 10px;
+}
+.attributes-container > h3 {
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid var(--ddColor);
+    background-color: var(--whiteColor);
+    border-radius: 3px;
+    text-align: center;
+    padding: 10px;
+}
+.attr-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px 0;
+}
+.attr-content > .attr-card {
+    width: 30%;
+    border: 1px solid var(--shoppeColor);
+    border-radius: 3px;
+    padding: 10px;
+    margin: 0 5px 5px 0;
+    background-color: var(--whiteColor);
+    text-align: center;
+}
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--ddColor); 
+    border-radius: 10px;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #333; 
+  }
+
+@media only screen and (max-width: 500px) {
+    .e-commerce-gui-container .e-commerce-gui-content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    .e-commerce-gui-container .e-commerce-gui-content .e-commerce-gui-card {
+        width: 100%;
+    }
+    .app-screen-container {
+        width: 100%;
+    }
+    .attributes-container {
+        padding: 5px;
+    }
+    .attr-content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .attr-content .attr-card {
+        width: 100%;
+    }
+    .attributes-container > h3 {
+        width: auto;
+        margin: 0 auto;
+        border: 1px solid var(--ddColor);
+        background-color: var(--whiteColor);
+        border-radius: 3px;
+        text-align: center;
+        padding: 10px;
+    }
+}
+@keyframes heart_beast {
+    from {
+        background-color: var(--chargingColor);
+    }
+    to {
+        background-color: var(--darkColor);
+    }
+}
+
+@keyframes loading_screen {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+@keyframes fade_in {
+    from {
+        background-color: var(--ddColor);
+    }
+    to {
+        background-color: var(--darkColor);
+    }
 }
