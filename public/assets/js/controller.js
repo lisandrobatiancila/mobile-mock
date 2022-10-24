@@ -89,23 +89,30 @@ class Controller {
         eCommerceContainerGUI.className = 'e-commerce-gui-container'; //eCommerceGUIContainer [CSSclass]
         ECHeaderGUI.className = 'ec-gui-header'; //eCommerceTopHeader [CSSclass]
         eCommerceContentGUI.className = 'e-commerce-gui-content';
-        ECHeaderGUI.setAttribute("id", "ec_header_gui");
+        ECHeaderCartGUI.setAttribute("id", "ec_header_gui");
 
         /*
             Setting the ECommerce Header GUI
         */
+       var cartHomeTag = document.createElement("div");
+       var cartHomeSpanTag = document.createElement("span");
         var cartPTag = document.createElement("p");
         var cartSpanTag = document.createElement("span");
 
+        cartHomeTag.setAttribute("id", "ec_header_home_gui")
+        cartHomeSpanTag.textContent = "Home";
+        cartHomeTag.className = "ec-home-cart-gui-header";
+        cartHomeTag.appendChild(cartHomeSpanTag);
+
         cartPTag.textContent = "Cart";
-        cartSpanTag.textContent = "3"
         cartSpanTag.style.fontSize = "12px";
         cartSpanTag.className = "badge badge-success";
         cartSpanTag.setAttribute("id", "cart-item-count");
-
+        
         cartPTag.appendChild(cartSpanTag)
         ECHeaderCartGUI.className = "ec-cart-gui-header";
         ECHeaderCartGUI.appendChild(cartPTag);
+        ECHeaderGUI.appendChild(cartHomeTag);
         ECHeaderGUI.appendChild(ECHeaderCartGUI);
         /*
             END OF Setting the ECommerce Header GUI
@@ -158,8 +165,8 @@ class Controller {
         var viewCartContentGUI = document.createElement("div");
 
         viewCartContentGUI.className = "e-commerce-gui-content";
-        
-        const cartLen = carts.length;
+
+        const cartLen = carts?carts.length:0;
 
         for(let i = 0; i < cartLen; i++) {
             var ecCardHeader = document.createElement("div"); //eCommercedCardHeader

@@ -67,8 +67,11 @@ function ecommerceContainerListener () {
     }, 1000);
 
     const ec_gui_headerSI = setInterval(() => {
-        const VIEW_HEADER_CART = document.getElementById("ec_header_gui");
+        const VIEW_HEADER_CART = document.getElementById("ec_header_gui"); // go to viewCart
         VIEW_HEADER_CART.addEventListener("click", viewCart)
+
+        const VIEW_HOME_CART = document.getElementById("ec_header_home_gui"); // go back to homeCart
+        VIEW_HOME_CART.addEventListener("click", () => ecommerceContainerListener()) // calling back itself to reDisplay
         clearInterval(ec_gui_headerSI)
     }, 1000)
 } //open the eCommerce Application

@@ -347,6 +347,14 @@ body {
     z-index: 100;
     overflow: auto;
 }
+.ec-gui-header .ec-home-cart-gui-header {
+    float: left;
+    padding: 5px;
+    cursor: pointer;
+}
+.ec-gui-header .ec-home-cart-gui-header:hover {
+    background-color: var(--ddColor);
+}
 .ec-gui-header .ec-cart-gui-header {
     float: right;
     cursor: pointer;
